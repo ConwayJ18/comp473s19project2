@@ -7,14 +7,14 @@ import com.online.facilitymanager.model.use.Use;
 
 public interface Facility
 {
-	Location getFacilityLocation();
-	void setFacilityLocation(Location location);
+	Location getLocation();
+	void setLocation(Location location);
 	FacilityDetail getFacilityDetail();
 	void setFacilityDetail(FacilityDetail detail);
-	Use getFacilityUse();
-	void setFacilityUse(Use use);
-	Maintenance getFacilityMaintenance();
-	void setFacilityMaintenance(Maintenance maintenance);
+	Use getUse();
+	void setUse(Use use);
+	Maintenance getMaintenance();
+	void setMaintenance(Maintenance maintenance);
 	ArrayList<Inspection> getInspections();
 	void addInspection(Inspection inspection);
 }

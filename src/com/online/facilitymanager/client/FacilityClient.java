@@ -41,7 +41,7 @@ public class FacilityClient
 		//Begin creation of primary test objects
 		Facility f1 = (Facility) context.getBean("facility");
 		
-		Location fl1 = f1.getFacilityLocation();
+		Location fl1 = f1.getLocation();
 		fl1.setAddressNumber(1032);
 		fl1.setDirectional("W");
 		fl1.setStreetName("Sheridan");
@@ -56,8 +56,8 @@ public class FacilityClient
 		fd1.setCapacity(5574);
 		fd1.setSquareFeet(67000);
 		
-		Use u1 = f1.getFacilityUse();
-		UseRequest ur1 = u1.getRequests().get(1);
+		Use u1 = f1.getUse();
+/*		UseRequest ur1 = u1.getRequests().get(1);
 		FacilityUser fu1 = ur1.getUser();
 		fu1.setUserID("jaconway");
 		fu1.setUserName("Jess Conway");
@@ -85,11 +85,11 @@ public class FacilityClient
 		dt1.setDay(17);
 		dt1.setMonth(3);
 		dt1.setYear(2019);
-		UseSchedule us1 = u1.getSchedule();
+*/		UseSchedule us1 = u1.getSchedule();
 		
-		Maintenance m1 = f1.getFacilityMaintenance();
+		Maintenance m1 = f1.getMaintenance();
 		MaintenanceSchedule ms1 = m1.getMaintSchedule();
-		MaintenanceOrder mo1 = m1.getMaintOrders().get(1);
+/*		MaintenanceOrder mo1 = m1.getMaintOrders().get(1);
 		Date dt2 = mo1.getRequestDate();
 		dt2.setDay(30);
 		dt2.setMonth(3);
@@ -106,8 +106,8 @@ public class FacilityClient
 		dt4.setDay(30);
 		dt4.setMonth(3);
 		dt4.setYear(2019);
-		
-		Inspection i1 = f1.getInspections().get(1);
+*/		
+/*		Inspection i1 = f1.getInspections().get(1);
 		i1.setInspectionType("Fire");
 		Slot s2 = i1.getSlot();
 		Time st2 = s2.getStartTime();
@@ -120,7 +120,7 @@ public class FacilityClient
 		dt5.setDay(21);
 		dt5.setMonth(12);
 		dt5.setYear(2025);
-		
+*/		
 		//Begin FacilityDAL tests
 		FacilityDAO fClient = new FacilityDAO();
 		fClient.addNewFacility(f1);
@@ -131,11 +131,11 @@ public class FacilityClient
 		//End FacilityDAL tests
 		
 		//Begin UseDAL tests
-		f1.addInspection(i1);
+//		f1.addInspection(i1);
 		fClient.addNewFacility(f1);
 		UseDAO uClient = new UseDAO();
 		//uClient.isInUseDuringInterval(f1, d2, start2, end2);
-		uClient.assignFacilityToUse(f1, ur1);
+//		uClient.assignFacilityToUse(f1, ur1);
 		uClient.vacateFacility(f1);
 		uClient.listInspections(f1);
 		uClient.listActualUsage(f1);
@@ -144,14 +144,16 @@ public class FacilityClient
 		
 		//Begin MaintenanceDAL tests
 		MaintenanceDAO mClient = new MaintenanceDAO();
-		mClient.makeFacilityMaintRequest(f1, mr1);
+//		mClient.makeFacilityMaintRequest(f1, mr1);
 		//mClient.scheduleMaintenance(f1, mo1, s4);
-		mClient.calcMaintenanceCostForFacility(f1);
-		mClient.calcProblemRateForFacility(f1);
+//		mClient.calcMaintenanceCostForFacility(f1);
+//		mClient.calcProblemRateForFacility(f1);
 		mClient.calcDownTimeForFacility(f1);
 		mClient.listMaintRequests(f1);
 		mClient.listMaintenance(f1);
 		mClient.listFacilityProblems(f1);
 		//End MaintenanceDAL tests
+		
+		System.out.println("***************** End of program reached! ******************");
 	}
 }

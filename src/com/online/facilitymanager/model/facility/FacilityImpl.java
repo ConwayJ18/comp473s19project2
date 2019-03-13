@@ -35,7 +35,7 @@ public class FacilityImpl implements Facility
 	 * @return the location
 	 */
 	@Override
-	public Location getFacilityLocation()
+	public Location getLocation()
 	{
 		return location;
 	}
@@ -44,7 +44,7 @@ public class FacilityImpl implements Facility
 	 * @param location the location to set
 	 */
 	@Override
-	public void setFacilityLocation(Location location)
+	public void setLocation(Location location)
 	{
 		this.location = location;
 	}
@@ -71,7 +71,7 @@ public class FacilityImpl implements Facility
 	 * @return the use
 	 */
 	@Override
-	public Use getFacilityUse()
+	public Use getUse()
 	{
 		return use;
 	}
@@ -80,7 +80,7 @@ public class FacilityImpl implements Facility
 	 * @param use the use to set
 	 */
 	@Override
-	public void setFacilityUse(Use use)
+	public void setUse(Use use)
 	{
 		this.use = use;
 	}
@@ -89,7 +89,7 @@ public class FacilityImpl implements Facility
 	 * @return the maintenance
 	 */
 	@Override
-	public Maintenance getFacilityMaintenance()
+	public Maintenance getMaintenance()
 	{
 		return maintenance;
 	}
@@ -98,7 +98,7 @@ public class FacilityImpl implements Facility
 	 * @param maintenance the maintenance to set
 	 */
 	@Override
-	public void setFacilityMaintenance(Maintenance maintenance)
+	public void setMaintenance(Maintenance maintenance)
 	{
 		this.maintenance = maintenance;
 	}

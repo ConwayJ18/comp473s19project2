@@ -15,29 +15,29 @@
 		<property name="location" ref="location" />
 		<property name="use" ref="use" />
 		<property name="maintenance" ref="maintenance" />
-		<property name="inspection" ref="inspection" />
+<!-- 		<property name="inspection" ref="inspection" /> -->
 	</bean>
 	<bean id="facilityDetail" class="com.online.facilitymanager.model.facility.FacilityDetailImpl" scope="prototype"/>
 	<bean id="location" class="com.online.facilitymanager.model.facility.LocationImpl" scope="prototype"/>
 	
 	<!-- Use Beans -->
 	<bean id="use" class="com.online.facilitymanager.model.use.UseImpl" scope="prototype">
-		<property name="useRequest" ref="useRequest" />
-		<property name="useSchedule" ref="useSchedule" />
+<!-- 	<property name="useRequest" ref="useRequest" /> -->
+		<property name="schedule" ref="useSchedule" />
 	</bean>
 	<bean id="user" class="com.online.facilitymanager.model.use.FacilityUserImpl" scope="prototype"/>
 	<bean id="useRequest" class="com.online.facilitymanager.model.use.UseRequestImpl" scope="prototype">
 		<property name="user" ref="user" />
-		<property name="slot" ref="slot" />
+		<property name="timeslot" ref="slot" />
 	</bean>
 	<bean id="useSchedule" class="com.online.facilitymanager.model.use.UseScheduleImpl" scope="prototype"/>
 	
 	<!-- Maintenance Beans -->
 	<bean id="maintenance" class="com.online.facilitymanager.model.maintenance.MaintenanceImpl" scope="prototype">
 		<property name="maintenanceSchedule" ref="maintenanceSchedule" />
-		<property name="maintenanceOrder" ref="maintenanceOrder" />
+<!--		<property name="maintenanceOrders" ref="maintenanceOrder" /> -->
 		<property name="maintenanceLog" ref="maintenanceLog" />
-		<property name="maintenanceRequest" ref="maintenanceRequest" />
+<!--		<property name="maintenanceRequests" ref="maintenanceRequest" /> -->
 	</bean>
 	<bean id="maintenanceLog" class="com.online.facilitymanager.model.maintenance.MaintenanceLogImpl" scope="prototype"/>
 	<bean id="maintenanceOrder" class="com.online.facilitymanager.model.maintenance.MaintenanceOrderImpl" scope="prototype">
@@ -47,7 +47,7 @@
 	<bean id="maintenanceRequest" class="com.online.facilitymanager.model.maintenance.MaintenanceRequestImpl" scope="prototype">
 		<property name="date" ref="date" />
 	</bean>
-	<bean id="maintenanceScedule" class="com.online.facilitymanager.model.maintenance.MaintenanceScheduleImpl" scope="prototype"/>
+	<bean id="maintenanceSchedule" class="com.online.facilitymanager.model.maintenance.MaintenanceScheduleImpl" scope="prototype"/>
 	
 	<!-- Inspection Beans -->
 	<bean id="inspection" class="com.online.facilitymanager.model.inspection.InspectionImpl" scope="prototype">

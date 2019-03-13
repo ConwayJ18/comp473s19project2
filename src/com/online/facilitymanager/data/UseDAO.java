@@ -19,7 +19,7 @@ public class UseDAO
 	public boolean isInUseDuringInterval(Facility f, Date d, Time start, Time end)
 	{
 		Slot comp = new SlotImpl(d, start, end);
-		for(Slot s : Database.db.get(f).getFacilityUse().getSchedule().getSchedule().values())
+		for(Slot s : Database.db.get(f).getUse().getSchedule().getSchedule().values())
 		{
 			if(s.overlaps(comp))
 			{
@@ -33,7 +33,7 @@ public class UseDAO
 	public boolean isInUseDuringInterval(Facility f, Days d, Time start, Time end)
 	{
 		Slot comp = new SlotImpl(d, start, end);
-		for(Slot s : Database.db.get(f).getFacilityUse().getSchedule().getSchedule().values())
+		for(Slot s : Database.db.get(f).getUse().getSchedule().getSchedule().values())
 		{
 			if(s.overlaps(comp))
 			{
@@ -46,12 +46,12 @@ public class UseDAO
 	
 	public void assignFacilityToUse(Facility f, UseRequest ur)
 	{
-		Database.db.get(f).getFacilityUse().getSchedule().getSchedule().put(ur, ur.getTimeslot());
+		Database.db.get(f).getUse().getSchedule().getSchedule().put(ur, ur.getTimeslot());
 	}
 	
 	public void vacateFacility(Facility f)
 	{
-		Database.db.get(f).getFacilityUse().getSchedule().getSchedule().clear();
+		Database.db.get(f).getUse().getSchedule().getSchedule().clear();
 	}
 	
 	public ArrayList<Inspection> listInspections(Facility f)
@@ -61,14 +61,14 @@ public class UseDAO
 	
 	public UseSchedule listActualUsage(Facility f)
 	{
-		return Database.db.get(f).getFacilityUse().getSchedule();
+		return Database.db.get(f).getUse().getSchedule();
 	}
 	
 	public double calcUsageRate(Facility f)
 	{
 		int totalMinutesInUse = 0;
 		double usageRate;
-		for(Slot s : Database.db.get(f).getFacilityUse().getSchedule().getSchedule().values())
+		for(Slot s : Database.db.get(f).getUse().getSchedule().getSchedule().values())
 		{
 			if(s.getDays().equals(null))
 			{

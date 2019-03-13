@@ -6,10 +6,12 @@ import com.online.facilitymanager.model.slot.Slot;
 
 public class MaintenanceImpl implements Maintenance
 {
-	private MaintenanceSchedule maintSchedule;
-	private ArrayList<MaintenanceOrder> maintOrders;
-	private MaintenanceLog maintLog;
-	private ArrayList<MaintenanceRequest> maintRequests;
+	private MaintenanceSchedule maintenanceSchedule;
+	private ArrayList<MaintenanceOrder> maintenanceOrders;
+	private MaintenanceLog maintenanceLog;
+	private ArrayList<MaintenanceRequest> maintenanceRequests;
+
+	public MaintenanceImpl() {}
 
 	/**
 	 * @param maintSchedule
@@ -19,10 +21,10 @@ public class MaintenanceImpl implements Maintenance
 	 */
 	public MaintenanceImpl(MaintenanceSchedule schedule, MaintenanceLog log)
 	{
-		this.maintSchedule = schedule;
-		this.maintOrders = new ArrayList<MaintenanceOrder>();
-		this.maintLog = log;
-		this.maintRequests = new ArrayList<MaintenanceRequest>();
+		this.maintenanceSchedule = schedule;
+		this.maintenanceOrders = new ArrayList<MaintenanceOrder>();
+		this.maintenanceLog = log;
+		this.maintenanceRequests = new ArrayList<MaintenanceRequest>();
 	}
 
 	/**
@@ -30,7 +32,7 @@ public class MaintenanceImpl implements Maintenance
 	 */
 	public MaintenanceSchedule getMaintSchedule()
 	{
-		return maintSchedule;
+		return maintenanceSchedule;
 	}
 	
 	/**
@@ -38,7 +40,23 @@ public class MaintenanceImpl implements Maintenance
 	 */
 	public void setMaintenanceSchedule(MaintenanceSchedule maintSchedule)
 	{
-		this.maintSchedule = maintSchedule;
+		this.maintenanceSchedule = maintSchedule;
+	}
+	
+	/**
+	 * @return the maintLog
+	 */
+	public MaintenanceLog getMaintenanceLog()
+	{
+		return maintenanceLog;
+	}
+	
+	/**
+	 * @param maintLog the maintLog to set
+	 */
+	public void setMaintenanceLog(MaintenanceLog maintLog)
+	{
+		this.maintenanceLog = maintLog;
 	}
 	
 	/**
@@ -46,7 +64,7 @@ public class MaintenanceImpl implements Maintenance
 	 */
 	public ArrayList<MaintenanceOrder> getMaintOrders()
 	{
-		return maintOrders;
+		return maintenanceOrders;
 	}
 	
 	/**
@@ -54,43 +72,43 @@ public class MaintenanceImpl implements Maintenance
 	 */
 	public MaintenanceLog getMaintLog()
 	{
-		return maintLog;
+		return maintenanceLog;
 	}
 
 	/**
 	 * @return the maintReq
 	 */
 	public ArrayList<MaintenanceRequest> getMaintReqs() {
-		return maintRequests;
+		return maintenanceRequests;
 	}
 	
 	/**
 	 * @param maintReq the maintReq to set
 	 */
 	public void addMaintReq(MaintenanceRequest maintReq) {
-		maintRequests.add(maintReq);
+		maintenanceRequests.add(maintReq);
 	}
 	
 	/**
 	 * @param maintOrder the maintOrder to add
 	 */
 	public void addOrderToSchedule(MaintenanceOrder maintOrder, Slot timeSlot) {
-		maintSchedule.getSchedule().put(maintOrder, timeSlot);
-		maintOrders.remove(maintOrder);
+		maintenanceSchedule.getSchedule().put(maintOrder, timeSlot);
+		maintenanceOrders.remove(maintOrder);
 	}
 
 	/**
 	 * @param maintOrder the maintOrder to set
 	 */
 	public void addMaintOrder(MaintenanceOrder maintOrder) {
-		maintOrders.add(maintOrder);
+		maintenanceOrders.add(maintOrder);
 	}
 
 	/**
 	 * @param maintOrder the maintOrder to add
 	 */
 	public void addOrderToLog(MaintenanceOrder maintOrder) {
-		maintLog.getLog().put(maintOrder, maintSchedule.getSchedule().get(maintOrder));
-		maintSchedule.getSchedule().remove(maintOrder);
+		maintenanceLog.getLog().put(maintOrder, maintenanceSchedule.getSchedule().get(maintOrder));
+		maintenanceSchedule.getSchedule().remove(maintOrder);
 	}
 }
