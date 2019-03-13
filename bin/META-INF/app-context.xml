@@ -9,28 +9,63 @@
 
 	<context:component-scan base-package="com.online.facilitymanager" />
 	
-	<bean id="facility" class="com.online.facilitymanager.model.facility.Facility" scope="prototype"/>
+	<!-- Facility Beans -->
+	<bean id="facility" class="com.online.facilitymanager.model.facility.Facility" scope="prototype">
+		<property name="facilityDetail" ref="facilityDetail"/>
+		<property name="location" ref="location" />
+		<property name="use" ref="use" />
+		<property name="maintenance" ref="maintenance" />
+		<property name="inspection" ref="inspection" />
+	</bean>
 	<bean id="facilityDetail" class="com.online.facilitymanager.model.facility.FacilityDetail" scope="prototype"/>
 	<bean id="location" class="com.online.facilitymanager.model.facility.Location" scope="prototype"/>
 	
-	<bean id="inspection" class="com.online.facilitymanager.model.inspection.Inspection" scope="prototype"/>
+	<!-- Use Beans -->
+	<bean id="use" class="com.online.facilitymanager.model.use.Use" scope="prototype">
+		<property name="useRequest" ref="location" />
+		<property name="useSchedule" ref="use" />
+	</bean>
+	<bean id="user" class="com.online.facilitymanager.model.use.FacilityUser" scope="prototype"/>
+	<bean id="useRequest" class="com.online.facilitymanager.model.use.UseRequest" scope="prototype">
+		<property name="user" ref="user" />
+		<property name="slot" ref="slot" />
+	</bean>
+	<bean id="useSchedule" class="com.online.facilitymanager.model.use.UseSchedule" scope="prototype">
+		<property name="useSchedule" ref="useSchedule" />
+	</bean>
 	
-	<bean id="maintenance" class="com.online.facilitymanager.model.maintenance.Maintenance" scope="prototype"/>
+	<!-- Maintenance Beans -->
+	<bean id="maintenance" class="com.online.facilitymanager.model.maintenance.Maintenance" scope="prototype">
+		<property name="maintenanceSchedule" ref="maintenanceSchedule" />
+		<property name="maintenanceOrder" ref="maintenanceOrder" />
+		<property name="maintenanceLog" ref="maintenanceLog" />
+		<property name="maintenanceRequest" ref="maintenanceRequest" />
+	</bean>
 	<bean id="maintenanceLog" class="com.online.facilitymanager.model.maintenance.MaintenanceLog" scope="prototype"/>
-	<bean id="maintenanceOrder" class="com.online.facilitymanager.model.maintenance.MaintenanceOrder" scope="prototype"/>
-	<bean id="maintenanceRequest" class="com.online.facilitymanager.model.maintenance.MaintenanceRequest" scope="prototype"/>
+	<bean id="maintenanceOrder" class="com.online.facilitymanager.model.maintenance.MaintenanceOrder" scope="prototype">
+		<property name="reqDate" ref="date" />
+		<property name="orderdate" ref="date" />
+	</bean>
+	<bean id="maintenanceRequest" class="com.online.facilitymanager.model.maintenance.MaintenanceRequest" scope="prototype">
+		<property name="date" ref="date" />
+	</bean>
 	<bean id="maintenanceScedule" class="com.online.facilitymanager.model.maintenance.MaintenanceSchedule" scope="prototype"/>
+	<bean id="inspection" class="com.online.facilitymanager.model.inspection.Inspection" scope="prototype">
+		<property name="slot" ref="slot" />
+	</bean>
 	
+	<!-- Slot Beans -->
+	<bean id="slot" class="com.online.facilitymanager.model.slot.Slot" scope="prototype">
+		<property name="days" ref="days" />
+		<property name="sTime" ref="time" />
+		<property name="eTime" ref="time" />
+		<property name="duration" ref="duration" />
+		<property name="date" ref="date" />
+	</bean>
 	<bean id="date" class="com.online.facilitymanager.model.slot.Date" scope="prototype"/>
 	<bean id="days" class="com.online.facilitymanager.model.slot.Days" scope="prototype"/>
 	<bean id="duration" class="com.online.facilitymanager.model.slot.Duration" scope="prototype"/>
-	<bean id="slot" class="com.online.facilitymanager.model.slot.Slot" scope="prototype"/>
 	<bean id="time" class="com.online.facilitymanager.model.slot.Time" scope="prototype"/>
-
-	<bean id="use" class="com.online.facilitymanager.model.use.Use" scope="prototype"/>
-	<bean id="user" class="com.online.facilitymanager.model.use.User" scope="prototype"/>
-	<bean id="useRequest" class="com.online.facilitymanager.model.use.UseRequest" scope="prototype"/>
-	<bean id="useSchedule" class="com.online.facilitymanager.model.use.UseSchedule" scope="prototype"/>
 
 
 <!--  -->
