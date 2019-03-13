@@ -50,6 +50,8 @@
 		<property name="date" ref="date" />
 	</bean>
 	<bean id="maintenanceScedule" class="com.online.facilitymanager.model.maintenance.MaintenanceSchedule" scope="prototype"/>
+	
+	<!-- Inspection Beans -->
 	<bean id="inspection" class="com.online.facilitymanager.model.inspection.Inspection" scope="prototype">
 		<property name="slot" ref="slot" />
 	</bean>

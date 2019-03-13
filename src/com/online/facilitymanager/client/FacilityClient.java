@@ -1,19 +1,87 @@
-package com.online.client;
+package com.online.facilitymanager.client;
+
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.online.facilitymanager.model.facility.Location;
+import com.online.facilitymanager.model.inspection.Inspection;
+import com.online.facilitymanager.model.maintenance.Maintenance;
+import com.online.facilitymanager.model.maintenance.MaintenanceLog;
+import com.online.facilitymanager.model.maintenance.MaintenanceOrder;
+import com.online.facilitymanager.model.maintenance.MaintenanceRequest;
+import com.online.facilitymanager.model.maintenance.MaintenanceSchedule;
+import com.online.facilitymanager.model.slot.Date;
+import com.online.facilitymanager.model.slot.Days;
+import com.online.facilitymanager.model.slot.Duration;
+import com.online.facilitymanager.model.slot.Slot;
+import com.online.facilitymanager.model.slot.Time;
+import com.online.facilitymanager.model.facility.Facility;
+import com.online.facilitymanager.model.facility.FacilityDetail;
+import com.online.facilitymanager.model.use.UseSchedule;
+import com.online.facilitymanager.model.use.FacilityUser;
+import com.online.facilitymanager.model.use.Use;
+import com.online.facilitymanager.model.use.UseRequest;
 
 public class FacilityClient
 {
 	public static void main(String args[])
 	{
+		
+		ApplicationContext context = new ClassPathXmlApplicationContext("META-INF/app-context.xml");
+		System.out.println("***************** Application Context instantiated! ******************");
 		/*
 		 * The following objects are needed in order to begin testing
 		 */
-		
 		//Begin creation of primary test objects
-		FacilityLocation fl1 = new FacilityLocation(1032, "W", "Sheridan Rd", "Chicago", "IL", 60626, "United States");
-		FacilityDetail fd1 = new FacilityDetail(1, "Information Commons", 5574, 67000);
+		Facility f1 = (Facility) context.getBean("facility");
 		
-		UseSchedule us1 = new UseSchedule();
-		FacilityUse u1 = new FacilityUse(us1);
+		Location fl1 = f1.getFacilityLocation();
+		fl1.setAddressNumber(1032);
+		fl1.setDirectional("W");
+		fl1.setStreetName("Sheridan");
+		fl1.setCity("Chicago");
+		fl1.setState("IL");
+		fl1.setZip(60660);
+		fl1.setCountry("United States");
+		
+		FacilityDetail fd1 = f1.getFacilityDetail();
+		fd1.setId(1);
+		fd1.setName("Information Commons");
+		fd1.setCapacity(5574);
+		fd1.setSquareFeet(67000);
+		
+		Use u1 = f1.getFacilityUse();
+		UseRequest ur1 = u1.getRequests().get(1);
+		FacilityUser fu1 = ur1.getUser();
+		Slot s1 = ur1.getTimeslot();
+		Days dy1 = s1.getDays();
+		Time st1 = s1.getStartTime();
+		Time et1 = s1.getEndTime();
+		Duration dr1 = s1.getDuration();
+		Date dt1 = s1.getDate();
+		UseSchedule us1 = u1.getSchedule();
+		
+		Maintenance m1 = f1.getFacilityMaintenance();
+		MaintenanceSchedule ms1 = m1.getMaintSchedule();
+		MaintenanceOrder mo1 = m1.getMaintOrders().get(1);
+		Date dt2 = mo1.getRequestDate();
+		Date dt3 = mo1.getOrderDate();
+		MaintenanceLog ml1 = m1.getMaintLog();
+		MaintenanceRequest mr1 = m1.getMaintReqs().get(1);
+		Date dt4 = mr1.getRequestDate();
+		
+		Inspection i1 = f1.getInspections().get(1);
+		Slot s2 = i1.getSlot();
+		Days dy2 = s2.getDays();
+		Time st2 = s2.getStartTime();
+		Time et2 = s2.getEndTime();
+		Duration dr2 = s2.getDuration();
+		Date dt5 = s2.getDate();
+		
+		/*
 		
 		MaintenanceSchedule ms1 = new MaintenanceSchedule();
 		MaintenanceLog ml1 = new MaintenanceLog();
@@ -43,11 +111,6 @@ public class FacilityClient
 		MaintenanceOrder mo1 = new MaintenanceOrder(mr1, d4, 14100);
 		//End creation of secondary test objects
 		
-		
-		
-		/*
-		 * The following code is used in place of JUnit tests to test the DAL
-		 */
 		
 		//Begin FacilityDAL tests
 		FacilityDAO fClient = new FacilityDAO();
@@ -81,5 +144,6 @@ public class FacilityClient
 		mClient.listMaintenance(f1);
 		mClient.listFacilityProblems(f1);
 		//End MaintenanceDAL tests
+		*/
 	}
 }
