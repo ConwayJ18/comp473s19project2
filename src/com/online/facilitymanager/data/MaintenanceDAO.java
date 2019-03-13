@@ -1,6 +1,13 @@
-package comp473s19project1;
+package com.online.facilitymanager.data;
 
 import java.util.ArrayList;
+import com.online.facilitymanager.model.facility.Facility;
+import com.online.facilitymanager.model.maintenance.MaintenanceOrder;
+import com.online.facilitymanager.model.maintenance.MaintenanceRequest;
+import com.online.facilitymanager.model.maintenance.MaintenanceSchedule;
+import com.online.facilitymanager.model.slot.Date;
+import com.online.facilitymanager.model.slot.DateImpl;
+import com.online.facilitymanager.model.slot.Slot;
 
 public class MaintenanceDAO
 {
@@ -41,7 +48,7 @@ public class MaintenanceDAO
 	public String calcProblemRateForFacility(Facility f)
 	{
 		int totalProblems = 0;
-		Date oldestDate = new Date();
+		Date oldestDate = new DateImpl();
 		
 		for(MaintenanceOrder o : Database.db.get(f).getFacilityMaintenance().getMaintOrders())
 		{

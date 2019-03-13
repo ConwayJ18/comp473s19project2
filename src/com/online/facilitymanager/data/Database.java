@@ -1,6 +1,7 @@
-package comp473s19project1;
+package com.online.facilitymanager.data;
 
 import java.util.HashMap;
+import com.online.facilitymanager.model.facility.Facility;
 
 public class Database
 {

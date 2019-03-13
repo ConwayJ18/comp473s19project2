@@ -1,6 +1,8 @@
-package comp473s19project1;
+package com.online.facilitymanager.data;
 
 import java.util.Collection;
+import com.online.facilitymanager.model.facility.Facility;
+import com.online.facilitymanager.model.facility.FacilityDetail;
 
 public class FacilityDAO
 {

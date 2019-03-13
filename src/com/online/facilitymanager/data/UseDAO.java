@@ -1,6 +1,16 @@
-package comp473s19project1;
+package com.online.facilitymanager.data;
 
 import java.util.ArrayList;
+
+import com.online.facilitymanager.model.facility.Facility;
+import com.online.facilitymanager.model.inspection.Inspection;
+import com.online.facilitymanager.model.slot.Date;
+import com.online.facilitymanager.model.slot.Days;
+import com.online.facilitymanager.model.slot.Slot;
+import com.online.facilitymanager.model.slot.SlotImpl;
+import com.online.facilitymanager.model.slot.Time;
+import com.online.facilitymanager.model.use.UseRequest;
+import com.online.facilitymanager.model.use.UseSchedule;
 
 public class UseDAO
 {
@@ -8,7 +18,7 @@ public class UseDAO
 	
 	public boolean isInUseDuringInterval(Facility f, Date d, Time start, Time end)
 	{
-		Slot comp = new Slot(d, start, end);
+		Slot comp = new SlotImpl(d, start, end);
 		for(Slot s : Database.db.get(f).getFacilityUse().getSchedule().getSchedule().values())
 		{
 			if(s.overlaps(comp))
@@ -22,7 +32,7 @@ public class UseDAO
 	
 	public boolean isInUseDuringInterval(Facility f, Days d, Time start, Time end)
 	{
-		Slot comp = new Slot(d, start, end);
+		Slot comp = new SlotImpl(d, start, end);
 		for(Slot s : Database.db.get(f).getFacilityUse().getSchedule().getSchedule().values())
 		{
 			if(s.overlaps(comp))
