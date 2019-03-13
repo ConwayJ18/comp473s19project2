@@ -7,20 +7,41 @@
 
 	<description>Wiring the dependencies for the Online Facility Management Application.</description>
 
-	<context:component-scan base-package="com.online.bookstore" />
+	<context:component-scan base-package="com.online.facilitymanager" />
 	
-	<bean id="billingAddress" class="com.online.bookstore.model.customer.AddressImpl" scope="prototype"/>
-	<bean id="shippingAddress" class="com.online.bookstore.model.customer.AddressImpl" scope="prototype"/>
-	<bean id="book" class="com.online.bookstore.model.product.Book" scope="prototype"/>
+	<bean id="facility" class="com.online.facilitymanager.model.facility.Facility" scope="prototype"/>
+	<bean id="facilityDetail" class="com.online.facilitymanager.model.facility.FacilityDetail" scope="prototype"/>
+	<bean id="location" class="com.online.facilitymanager.model.facility.Location" scope="prototype"/>
+	
+	<bean id="inspection" class="com.online.facilitymanager.model.inspection.Inspection" scope="prototype"/>
+	
+	<bean id="maintenance" class="com.online.facilitymanager.model.maintenance.Maintenance" scope="prototype"/>
+	<bean id="maintenanceLog" class="com.online.facilitymanager.model.maintenance.MaintenanceLog" scope="prototype"/>
+	<bean id="maintenanceOrder" class="com.online.facilitymanager.model.maintenance.MaintenanceOrder" scope="prototype"/>
+	<bean id="maintenanceRequest" class="com.online.facilitymanager.model.maintenance.MaintenanceRequest" scope="prototype"/>
+	<bean id="maintenanceScedule" class="com.online.facilitymanager.model.maintenance.MaintenanceSchedule" scope="prototype"/>
+	
+	<bean id="date" class="com.online.facilitymanager.model.slot.Date" scope="prototype"/>
+	<bean id="days" class="com.online.facilitymanager.model.slot.Days" scope="prototype"/>
+	<bean id="duration" class="com.online.facilitymanager.model.slot.Duration" scope="prototype"/>
+	<bean id="slot" class="com.online.facilitymanager.model.slot.Slot" scope="prototype"/>
+	<bean id="time" class="com.online.facilitymanager.model.slot.Time" scope="prototype"/>
 
-	<bean id="orderDetail" class="com.online.bookstore.model.order.OrderDetailImpl" scope="prototype">
+	<bean id="use" class="com.online.facilitymanager.model.use.Use" scope="prototype"/>
+	<bean id="user" class="com.online.facilitymanager.model.use.User" scope="prototype"/>
+	<bean id="useRequest" class="com.online.facilitymanager.model.use.UseRequest" scope="prototype"/>
+	<bean id="useSchedule" class="com.online.facilitymanager.model.use.UseSchedule" scope="prototype"/>
+
+
+<!--  -->
+	<bean id="orderDetail" class="com.online.facilitymanager.model.order.OrderDetailImpl" scope="prototype">
 		<property name="book" ref="book" />
 		<property name="quantity" >
 			<value>0</value>
 		</property>
 	</bean>
 
-	<bean id="order" class="com.online.bookstore.model.order.OrderImpl" scope="prototype">	
+	<bean id="order" class="com.online.facilitymanager.model.order.OrderImpl" scope="prototype">	
 		<property name="orderDetails">
 			<list/>
         	<!-- 
@@ -32,9 +53,9 @@
          <property name="payment" ref="payment"/>
 	</bean>
 	
-	<bean id="payment" class="com.online.bookstore.model.order.PaymentImpl" scope="prototype" />
+	<bean id="payment" class="com.online.facilitymanager.model.order.PaymentImpl" scope="prototype" />
 	
-	<bean id="customer" class="com.online.bookstore.model.customer.CustomerImpl" scope="prototype">
+	<bean id="customer" class="com.online.facilitymanager.model.customer.CustomerImpl" scope="prototype">
 		<property name="billingAddress" ref="billingAddress" />
 		<property name="shippingAddress" ref="shippingAddress" />
 		<!-- Inject the Order List -->
@@ -48,7 +69,7 @@
          </property>
 	</bean>
 	
-	<bean id="customerService" class="com.online.bookstore.model.service.CustomerService" scope="prototype">
+	<bean id="customerService" class="com.online.facilitymanager.model.service.CustomerService" scope="prototype">
 		<property name="customer" ref="customer" />
 	</bean>
 	
