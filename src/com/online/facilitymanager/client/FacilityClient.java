@@ -18,6 +18,9 @@ import com.online.facilitymanager.model.slot.Days;
 import com.online.facilitymanager.model.slot.Duration;
 import com.online.facilitymanager.model.slot.Slot;
 import com.online.facilitymanager.model.slot.Time;
+import com.online.facilitymanager.data.FacilityDAO;
+import com.online.facilitymanager.data.MaintenanceDAO;
+import com.online.facilitymanager.data.UseDAO;
 import com.online.facilitymanager.model.facility.Facility;
 import com.online.facilitymanager.model.facility.FacilityDetail;
 import com.online.facilitymanager.model.use.UseSchedule;
@@ -56,61 +59,67 @@ public class FacilityClient
 		Use u1 = f1.getFacilityUse();
 		UseRequest ur1 = u1.getRequests().get(1);
 		FacilityUser fu1 = ur1.getUser();
+		fu1.setUserID("jaconway");
+		fu1.setUserName("Jess Conway");
+		fu1.setUserPhone(7864938008l);
+		fu1.setUserEmail("jconway6@luc.edu");
+		fu1.setUserRole("Admin");
 		Slot s1 = ur1.getTimeslot();
 		Days dy1 = s1.getDays();
+		dy1.setM(true);
+		dy1.setT(false);
+		dy1.setW(false);
+		dy1.setR(false);
+		dy1.setF(false);
+		dy1.setA(false);
+		dy1.setU(false);
 		Time st1 = s1.getStartTime();
+		st1.setHour(7);
+		st1.setMinute(0);
 		Time et1 = s1.getEndTime();
+		et1.setHour(9);
+		et1.setMinute(30);
 		Duration dr1 = s1.getDuration();
+		dr1.setDurationInMinutes(150);
 		Date dt1 = s1.getDate();
+		dt1.setDay(17);
+		dt1.setMonth(3);
+		dt1.setYear(2019);
 		UseSchedule us1 = u1.getSchedule();
 		
 		Maintenance m1 = f1.getFacilityMaintenance();
 		MaintenanceSchedule ms1 = m1.getMaintSchedule();
 		MaintenanceOrder mo1 = m1.getMaintOrders().get(1);
 		Date dt2 = mo1.getRequestDate();
+		dt2.setDay(30);
+		dt2.setMonth(3);
+		dt2.setYear(2019);
 		Date dt3 = mo1.getOrderDate();
+		dt3.setDay(5);
+		dt3.setMonth(4);
+		dt3.setYear(2019);
 		MaintenanceLog ml1 = m1.getMaintLog();
 		MaintenanceRequest mr1 = m1.getMaintReqs().get(1);
+		mr1.setDetail("Flooding on 1st Floor");
+		mr1.setUrgency(5);
 		Date dt4 = mr1.getRequestDate();
+		dt4.setDay(30);
+		dt4.setMonth(3);
+		dt4.setYear(2019);
 		
 		Inspection i1 = f1.getInspections().get(1);
+		i1.setInspectionType("Fire");
 		Slot s2 = i1.getSlot();
-		Days dy2 = s2.getDays();
 		Time st2 = s2.getStartTime();
+		st2.setHour(15);
+		st2.setMinute(29);
 		Time et2 = s2.getEndTime();
-		Duration dr2 = s2.getDuration();
+		et2.setHour(19);
+		et2.setMinute(17);
 		Date dt5 = s2.getDate();
-		
-		/*
-		
-		MaintenanceSchedule ms1 = new MaintenanceSchedule();
-		MaintenanceLog ml1 = new MaintenanceLog();
-		FacilityMaintenance m1 = new FacilityMaintenance(ms1, ml1);
-		Facility f1 = new Building(fl1, fd1, u1, m1);
-		
-		//Begin creation of secondary test objects
-		Time start1 = new Time(1, 0);
-		Time end1 = new Time(2, 0);
-		Days d1 = new Days(true,false,true,false,true,false,false);
-		Slot s1 = new Slot(d1, start1, end1);
-		FacilityUser fu1 = new FacilityUser("jaconway", "Jess Conway", 7864938008l, "jconway6@luc.edu", "Admin");
-		UseRequest ur1 = new UseRequest(fu1, s1);
-		
-		Time start2 = new Time(15, 29);
-		Time end2 = new Time(19, 17);
-		Date d2 = new Date(12,21,2019);
-		Slot s2 = new Slot(d2, start2, end2);
-		Inspection i1 = new Inspection("Fire", s2);
-
-		Date d3 = new Date(3, 30, 2019);
-		MaintenanceRequest mr1 = new MaintenanceRequest(5, "Flooding on 1st Floor", d3);
-		Date d4 = new Date(4,5,2019);
-		Time start4 = new Time(14, 00);
-		Duration duration4 = new Duration(120);
-		Slot s4 = new Slot(d4, start4, duration4);
-		MaintenanceOrder mo1 = new MaintenanceOrder(mr1, d4, 14100);
-		//End creation of secondary test objects
-		
+		dt5.setDay(21);
+		dt5.setMonth(12);
+		dt5.setYear(2025);
 		
 		//Begin FacilityDAL tests
 		FacilityDAO fClient = new FacilityDAO();
@@ -125,7 +134,7 @@ public class FacilityClient
 		f1.addInspection(i1);
 		fClient.addNewFacility(f1);
 		UseDAO uClient = new UseDAO();
-		uClient.isInUseDuringInterval(f1, d2, start2, end2);
+		//uClient.isInUseDuringInterval(f1, d2, start2, end2);
 		uClient.assignFacilityToUse(f1, ur1);
 		uClient.vacateFacility(f1);
 		uClient.listInspections(f1);
@@ -136,7 +145,7 @@ public class FacilityClient
 		//Begin MaintenanceDAL tests
 		MaintenanceDAO mClient = new MaintenanceDAO();
 		mClient.makeFacilityMaintRequest(f1, mr1);
-		mClient.scheduleMaintenance(f1, mo1, s4);
+		//mClient.scheduleMaintenance(f1, mo1, s4);
 		mClient.calcMaintenanceCostForFacility(f1);
 		mClient.calcProblemRateForFacility(f1);
 		mClient.calcDownTimeForFacility(f1);
@@ -144,6 +153,5 @@ public class FacilityClient
 		mClient.listMaintenance(f1);
 		mClient.listFacilityProblems(f1);
 		//End MaintenanceDAL tests
-		*/
 	}
 }
