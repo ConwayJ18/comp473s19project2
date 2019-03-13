@@ -1,6 +1,7 @@
-package comp473s19project1;
+package com.online.model.use;
 
 import java.util.HashMap;
+import com.online.model.slot.Slot;
 
 public class UseSchedule
 {

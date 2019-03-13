@@ -1,4 +1,4 @@
-package comp473s19project1;
+package com.online.model.facility;
 
 public class FacilityLocation
 {

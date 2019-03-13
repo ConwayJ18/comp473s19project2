@@ -1,4 +1,6 @@
-package comp473s19project1;
+package com.online.model.inspection;
+
+import com.online.model.slot.Slot;
 
 public class Inspection
 {

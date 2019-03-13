@@ -1,4 +1,6 @@
-package comp473s19project1;
+package com.online.model.maintenance;
+
+import com.online.model.slot.Date;
 
 public class MaintenanceRequest
 {

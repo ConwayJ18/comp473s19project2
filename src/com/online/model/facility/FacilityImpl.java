@@ -1,8 +1,12 @@
-package comp473s19project1;
+package com.online.model.facility;
 
 import java.util.ArrayList;
 
-public class Building implements Facility
+import com.online.model.inspection.Inspection;
+import com.online.model.maintenance.FacilityMaintenance;
+import com.online.model.use.FacilityUse;
+
+public class FacilityImpl implements Facility
 {
 	private FacilityLocation location;
 	private FacilityDetail detail;
@@ -10,7 +14,7 @@ public class Building implements Facility
 	private FacilityMaintenance maintenance;
 	private ArrayList<Inspection> inspections;
 
-	Building(){}
+	FacilityImpl(){}
 	
 	/**
 	 * @param location
@@ -18,7 +22,7 @@ public class Building implements Facility
 	 * @param use
 	 * @param maintenance
 	 */
-	public Building(FacilityLocation location, FacilityDetail detail, FacilityUse use,
+	public FacilityImpl(FacilityLocation location, FacilityDetail detail, FacilityUse use,
 			FacilityMaintenance maintenance)
 	{
 		this.location = location;

@@ -1,6 +1,10 @@
-package comp473s19project1;
+package com.online.model.facility;
 
 import java.util.ArrayList;
+
+import com.online.model.inspection.Inspection;
+import com.online.model.maintenance.FacilityMaintenance;
+import com.online.model.use.FacilityUse;
 
 public interface Facility
 {

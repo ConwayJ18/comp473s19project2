@@ -1,6 +1,7 @@
-package comp473s19project1;
+package com.online.model.maintenance;
 
 import java.util.HashMap;
+import com.online.model.slot.Slot;
 
 public class MaintenanceSchedule
 {

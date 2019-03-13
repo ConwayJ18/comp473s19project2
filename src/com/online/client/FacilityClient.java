@@ -1,6 +1,6 @@
-package comp473s19project1;
+package com.online.client;
 
-public class Driver
+public class FacilityClient
 {
 	public static void main(String args[])
 	{
