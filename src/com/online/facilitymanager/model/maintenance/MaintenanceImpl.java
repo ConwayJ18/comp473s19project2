@@ -62,30 +62,37 @@ public class MaintenanceImpl implements Maintenance
 	/**
 	 * @return the maintOrder
 	 */
-	public ArrayList<MaintenanceOrder> getMaintOrders()
+	public ArrayList<MaintenanceOrder> getMaintenanceOrders()
 	{
 		return maintenanceOrders;
 	}
 	
 	/**
-	 * @return the maintLog
+	 * @param maintOrders the maintOrders to set
 	 */
-	public MaintenanceLog getMaintLog()
+	public void setMaintenanceOrders(ArrayList<MaintenanceOrder> maintOrders)
 	{
-		return maintenanceLog;
+		this.maintenanceOrders = maintOrders;
 	}
 
 	/**
 	 * @return the maintReq
 	 */
-	public ArrayList<MaintenanceRequest> getMaintReqs() {
+	public ArrayList<MaintenanceRequest> getMaintenanceReqs() {
 		return maintenanceRequests;
 	}
 	
 	/**
 	 * @param maintReq the maintReq to set
 	 */
-	public void addMaintReq(MaintenanceRequest maintReq) {
+	public void setMaintenanceRequests(ArrayList<MaintenanceRequest> maintReq) {
+		this.maintenanceRequests = maintReq;
+	}
+	
+	/**
+	 * @param maintReq the maintReq to set
+	 */
+	public void addMaintenanceRequest(MaintenanceRequest maintReq) {
 		maintenanceRequests.add(maintReq);
 	}
 	
@@ -100,7 +107,7 @@ public class MaintenanceImpl implements Maintenance
 	/**
 	 * @param maintOrder the maintOrder to set
 	 */
-	public void addMaintOrder(MaintenanceOrder maintOrder) {
+	public void addMaintenanceOrder(MaintenanceOrder maintOrder) {
 		maintenanceOrders.add(maintOrder);
 	}
 

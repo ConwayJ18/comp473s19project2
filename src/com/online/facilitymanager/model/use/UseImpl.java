@@ -26,6 +26,14 @@ public class UseImpl implements Use
 	{
 		return requests;
 	}
+	
+	/**
+	 * @param user the user to set
+	 */
+	public void setRequests(ArrayList<UseRequest> requests)
+	{
+		this.requests = requests;
+	}
 
 	/**
 	 * @param user the user to set

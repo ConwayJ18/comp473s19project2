@@ -15,14 +15,14 @@
 		<property name="location" ref="location" />
 		<property name="use" ref="use" />
 		<property name="maintenance" ref="maintenance" />
-<!-- 		<property name="inspection" ref="inspection" /> -->
+ 		<property name="inspections" ref="inspectionsList" />
 	</bean>
 	<bean id="facilityDetail" class="com.online.facilitymanager.model.facility.FacilityDetailImpl" scope="prototype"/>
 	<bean id="location" class="com.online.facilitymanager.model.facility.LocationImpl" scope="prototype"/>
 	
 	<!-- Use Beans -->
 	<bean id="use" class="com.online.facilitymanager.model.use.UseImpl" scope="prototype">
-<!-- 	<property name="useRequest" ref="useRequest" /> -->
+	 	<property name="requests" ref="requestList" />
 		<property name="schedule" ref="useSchedule" />
 	</bean>
 	<bean id="user" class="com.online.facilitymanager.model.use.FacilityUserImpl" scope="prototype"/>
@@ -31,27 +31,55 @@
 		<property name="timeslot" ref="slot" />
 	</bean>
 	<bean id="useSchedule" class="com.online.facilitymanager.model.use.UseScheduleImpl" scope="prototype"/>
+	<bean id="requestList" class="java.util.ArrayList">
+	    <constructor-arg>
+	        <list>
+	            <ref bean="useRequest" />            
+	        </list>
+	    </constructor-arg>
+	</bean>
 	
 	<!-- Maintenance Beans -->
 	<bean id="maintenance" class="com.online.facilitymanager.model.maintenance.MaintenanceImpl" scope="prototype">
 		<property name="maintenanceSchedule" ref="maintenanceSchedule" />
-<!--		<property name="maintenanceOrders" ref="maintenanceOrder" /> -->
+		<property name="maintenanceOrders" ref="maintenanceOrders" />
 		<property name="maintenanceLog" ref="maintenanceLog" />
-<!--		<property name="maintenanceRequests" ref="maintenanceRequest" /> -->
+		<property name="maintenanceRequests" ref="maintenanceRequests" />
 	</bean>
 	<bean id="maintenanceLog" class="com.online.facilitymanager.model.maintenance.MaintenanceLogImpl" scope="prototype"/>
 	<bean id="maintenanceOrder" class="com.online.facilitymanager.model.maintenance.MaintenanceOrderImpl" scope="prototype">
-		<property name="reqDate" ref="date" />
-		<property name="orderdate" ref="date" />
+		<property name="requestDate" ref="date" />
+		<property name="orderDate" ref="date" />
 	</bean>
 	<bean id="maintenanceRequest" class="com.online.facilitymanager.model.maintenance.MaintenanceRequestImpl" scope="prototype">
-		<property name="date" ref="date" />
+		<property name="requestDate" ref="date" />
 	</bean>
 	<bean id="maintenanceSchedule" class="com.online.facilitymanager.model.maintenance.MaintenanceScheduleImpl" scope="prototype"/>
+	<bean id="maintenanceOrders" class="java.util.ArrayList">
+	    <constructor-arg>
+	        <list>
+	            <ref bean="maintenanceOrder" />            
+	        </list>
+	    </constructor-arg>
+	</bean>
+	<bean id="maintenanceRequests" class="java.util.ArrayList">
+	    <constructor-arg>
+	        <list>
+	            <ref bean="maintenanceRequest" />            
+	        </list>
+	    </constructor-arg>
+	</bean>
 	
 	<!-- Inspection Beans -->
 	<bean id="inspection" class="com.online.facilitymanager.model.inspection.InspectionImpl" scope="prototype">
 		<property name="slot" ref="slot" />
+	</bean>
+	<bean id="inspectionsList" class="java.util.ArrayList">
+	    <constructor-arg>
+	        <list>
+	            <ref bean="inspection" />            
+	        </list>
+	    </constructor-arg>
 	</bean>
 	
 	<!-- Slot Beans -->

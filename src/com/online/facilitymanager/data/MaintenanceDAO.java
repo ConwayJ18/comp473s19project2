@@ -15,7 +15,7 @@ public class MaintenanceDAO
 	
 	public void makeFacilityMaintRequest(Facility f, MaintenanceRequest mr)
 	{
-		Database.db.get(f).getMaintenance().addMaintReq(mr);
+		Database.db.get(f).getMaintenance().addMaintenanceRequest(mr);
 	}
 	
 	public void scheduleMaintenance(Facility f, MaintenanceOrder mo, Slot s)
@@ -27,7 +27,7 @@ public class MaintenanceDAO
 	{
 		int totalCost = 0;
 		
-		for(MaintenanceOrder o : Database.db.get(f).getMaintenance().getMaintOrders())
+		for(MaintenanceOrder o : Database.db.get(f).getMaintenance().getMaintenanceOrders())
 		{
 			totalCost += o.getCost();
 		}
@@ -37,7 +37,7 @@ public class MaintenanceDAO
 			totalCost += o.getCost();
 		}
 		
-		for(MaintenanceOrder o : Database.db.get(f).getMaintenance().getMaintLog().getLog().keySet())
+		for(MaintenanceOrder o : Database.db.get(f).getMaintenance().getMaintenanceLog().getLog().keySet())
 		{
 			totalCost += o.getCost();
 		}
@@ -50,7 +50,7 @@ public class MaintenanceDAO
 		int totalProblems = 0;
 		Date oldestDate = new DateImpl();
 		
-		for(MaintenanceOrder o : Database.db.get(f).getMaintenance().getMaintOrders())
+		for(MaintenanceOrder o : Database.db.get(f).getMaintenance().getMaintenanceOrders())
 		{
 			if(o.getRequestDate().isOlderThan(oldestDate))
 			{
@@ -68,7 +68,7 @@ public class MaintenanceDAO
 			totalProblems++;
 		}
 		
-		for(MaintenanceOrder o : Database.db.get(f).getMaintenance().getMaintLog().getLog().keySet())
+		for(MaintenanceOrder o : Database.db.get(f).getMaintenance().getMaintenanceLog().getLog().keySet())
 		{
 			if(o.getRequestDate().isOlderThan(oldestDate))
 			{
@@ -88,7 +88,7 @@ public class MaintenanceDAO
 			downtime += s.getDuration().getDurationInMinutes();
 		}
 		
-		for(Slot s : Database.db.get(f).getMaintenance().getMaintLog().getLog().values())
+		for(Slot s : Database.db.get(f).getMaintenance().getMaintenanceLog().getLog().values())
 		{
 			downtime += s.getDuration().getDurationInMinutes();
 		}
@@ -98,12 +98,12 @@ public class MaintenanceDAO
 	
 	public ArrayList<MaintenanceRequest> listMaintRequests(Facility f)
 	{
-		return Database.db.get(f).getMaintenance().getMaintReqs();
+		return Database.db.get(f).getMaintenance().getMaintenanceReqs();
 	}
 	
 	public ArrayList<MaintenanceOrder> listMaintenance(Facility f)
 	{
-		return Database.db.get(f).getMaintenance().getMaintOrders();
+		return Database.db.get(f).getMaintenance().getMaintenanceOrders();
 	}
 	
 	public MaintenanceSchedule listFacilityProblems(Facility f)

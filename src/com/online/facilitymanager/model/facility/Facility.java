@@ -17,4 +17,5 @@ public interface Facility
 	void setMaintenance(Maintenance maintenance);
 	ArrayList<Inspection> getInspections();
 	void addInspection(Inspection inspection);
+	void setInspections(ArrayList<Inspection> inspections);
 }

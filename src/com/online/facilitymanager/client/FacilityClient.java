@@ -35,9 +35,7 @@ public class FacilityClient
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext("META-INF/app-context.xml");
 		System.out.println("***************** Application Context instantiated! ******************");
-		/*
-		 * The following objects are needed in order to begin testing
-		 */
+		
 		//Begin creation of primary test objects
 		Facility f1 = (Facility) context.getBean("facility");
 		
@@ -57,7 +55,7 @@ public class FacilityClient
 		fd1.setSquareFeet(67000);
 		
 		Use u1 = f1.getUse();
-/*		UseRequest ur1 = u1.getRequests().get(1);
+		UseRequest ur1 = u1.getRequests().get(0);
 		FacilityUser fu1 = ur1.getUser();
 		fu1.setUserID("jaconway");
 		fu1.setUserName("Jess Conway");
@@ -85,11 +83,11 @@ public class FacilityClient
 		dt1.setDay(17);
 		dt1.setMonth(3);
 		dt1.setYear(2019);
-*/		UseSchedule us1 = u1.getSchedule();
+		UseSchedule us1 = u1.getSchedule();
 		
 		Maintenance m1 = f1.getMaintenance();
 		MaintenanceSchedule ms1 = m1.getMaintSchedule();
-/*		MaintenanceOrder mo1 = m1.getMaintOrders().get(1);
+		MaintenanceOrder mo1 = m1.getMaintenanceOrders().get(0);
 		Date dt2 = mo1.getRequestDate();
 		dt2.setDay(30);
 		dt2.setMonth(3);
@@ -98,16 +96,16 @@ public class FacilityClient
 		dt3.setDay(5);
 		dt3.setMonth(4);
 		dt3.setYear(2019);
-		MaintenanceLog ml1 = m1.getMaintLog();
-		MaintenanceRequest mr1 = m1.getMaintReqs().get(1);
+		MaintenanceLog ml1 = m1.getMaintenanceLog();
+		MaintenanceRequest mr1 = m1.getMaintenanceReqs().get(0);
 		mr1.setDetail("Flooding on 1st Floor");
 		mr1.setUrgency(5);
 		Date dt4 = mr1.getRequestDate();
 		dt4.setDay(30);
 		dt4.setMonth(3);
 		dt4.setYear(2019);
-*/		
-/*		Inspection i1 = f1.getInspections().get(1);
+		
+		Inspection i1 = f1.getInspections().get(0);
 		i1.setInspectionType("Fire");
 		Slot s2 = i1.getSlot();
 		Time st2 = s2.getStartTime();
@@ -120,7 +118,7 @@ public class FacilityClient
 		dt5.setDay(21);
 		dt5.setMonth(12);
 		dt5.setYear(2025);
-*/		
+		
 		//Begin FacilityDAL tests
 		FacilityDAO fClient = new FacilityDAO();
 		fClient.addNewFacility(f1);
@@ -131,11 +129,11 @@ public class FacilityClient
 		//End FacilityDAL tests
 		
 		//Begin UseDAL tests
-//		f1.addInspection(i1);
+		f1.addInspection(i1);
 		fClient.addNewFacility(f1);
 		UseDAO uClient = new UseDAO();
-		//uClient.isInUseDuringInterval(f1, d2, start2, end2);
-//		uClient.assignFacilityToUse(f1, ur1);
+		uClient.isInUseDuringInterval(f1, dt1, st1, et1);
+		uClient.assignFacilityToUse(f1, ur1);
 		uClient.vacateFacility(f1);
 		uClient.listInspections(f1);
 		uClient.listActualUsage(f1);
@@ -144,10 +142,10 @@ public class FacilityClient
 		
 		//Begin MaintenanceDAL tests
 		MaintenanceDAO mClient = new MaintenanceDAO();
-//		mClient.makeFacilityMaintRequest(f1, mr1);
-		//mClient.scheduleMaintenance(f1, mo1, s4);
-//		mClient.calcMaintenanceCostForFacility(f1);
-//		mClient.calcProblemRateForFacility(f1);
+		mClient.makeFacilityMaintRequest(f1, mr1);
+		mClient.scheduleMaintenance(f1, mo1, s1);
+		mClient.calcMaintenanceCostForFacility(f1);
+		mClient.calcProblemRateForFacility(f1);
 		mClient.calcDownTimeForFacility(f1);
 		mClient.listMaintRequests(f1);
 		mClient.listMaintenance(f1);

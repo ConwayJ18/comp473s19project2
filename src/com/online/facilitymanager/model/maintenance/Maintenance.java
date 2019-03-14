@@ -8,12 +8,12 @@ public interface Maintenance
 {
 	public MaintenanceSchedule getMaintSchedule();
 	public void setMaintenanceSchedule(MaintenanceSchedule maintSchedule);
-	public MaintenanceLog getMaintLog();
+	public MaintenanceLog getMaintenanceLog();
 	public void setMaintenanceLog(MaintenanceLog maintLog);
-	public ArrayList<MaintenanceOrder> getMaintOrders();
-	public ArrayList<MaintenanceRequest> getMaintReqs();
-	public void addMaintReq(MaintenanceRequest maintReq);
+	public ArrayList<MaintenanceOrder> getMaintenanceOrders();
+	public ArrayList<MaintenanceRequest> getMaintenanceReqs();
+	public void addMaintenanceRequest(MaintenanceRequest maintReq);
 	public void addOrderToSchedule(MaintenanceOrder maintOrder, Slot timeSlot);
-	public void addMaintOrder(MaintenanceOrder maintOrder);
+	public void addMaintenanceOrder(MaintenanceOrder maintOrder);
 	public void addOrderToLog(MaintenanceOrder maintOrder);
 }

@@ -116,6 +116,15 @@ public class FacilityImpl implements Facility
 	 * @param inspection the inspection to set
 	 */
 	@Override
+	public void setInspections(ArrayList<Inspection> inspections)
+	{
+		this.inspections = inspections;
+	}
+	
+	/**
+	 * @param inspection the inspection to set
+	 */
+	@Override
 	public void addInspection(Inspection inspection)
 	{
 		inspections.add(inspection);
