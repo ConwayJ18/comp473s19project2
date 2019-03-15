@@ -125,11 +125,11 @@ public class FacilityClient
 		fClient.addFacilityDetail(f1, fd1);
 		fClient.listFacilities();
 		fClient.requestAvailableCapacity(f1);
+		fClient.addInspection(f1, i1);
 		fClient.removeFacility(f1);
 		//End FacilityDAL tests
 		
 		//Begin UseDAL tests
-		f1.addInspection(i1);
 		fClient.addNewFacility(f1);
 		UseDAO uClient = new UseDAO();
 		uClient.isInUseDuringInterval(f1, dt1, st1, et1);
