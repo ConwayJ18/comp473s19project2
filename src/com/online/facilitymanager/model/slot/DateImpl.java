@@ -107,6 +107,6 @@ public class DateImpl implements Date
 	@Override
 	public String toString()
 	{
-		return this.getDay() + "/" + this.getMonth() + "/" + this.getYear();
+		return this.getMonth() + "/" + this.getDay() + "/" + this.getYear();
 	}
 }

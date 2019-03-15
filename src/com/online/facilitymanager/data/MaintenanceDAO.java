@@ -48,7 +48,7 @@ public class MaintenanceDAO
 	public String calcProblemRateForFacility(Facility f)
 	{
 		int totalProblems = 0;
-		Date oldestDate = new DateImpl();
+		Date oldestDate = new DateImpl(Integer.MAX_VALUE,Integer.MAX_VALUE,Integer.MAX_VALUE);
 		
 		for(MaintenanceOrder o : Database.db.get(f).getMaintenance().getMaintenanceOrders())
 		{
