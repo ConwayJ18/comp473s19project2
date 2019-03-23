@@ -18,9 +18,6 @@ import com.online.facilitymanager.model.slot.Days;
 import com.online.facilitymanager.model.slot.Duration;
 import com.online.facilitymanager.model.slot.Slot;
 import com.online.facilitymanager.model.slot.Time;
-import com.online.facilitymanager.data.FacilityDAO;
-import com.online.facilitymanager.data.MaintenanceDAO;
-import com.online.facilitymanager.data.UseDAO;
 import com.online.facilitymanager.model.facility.Facility;
 import com.online.facilitymanager.model.facility.FacilityDetail;
 import com.online.facilitymanager.model.use.UseSchedule;
@@ -119,18 +116,17 @@ public class FacilityClient
 		dt5.setMonth(12);
 		dt5.setYear(2025);
 		
-		//Begin FacilityDAL tests
-		FacilityDAO fClient = new FacilityDAO();
-		fClient.addNewFacility(f1);
-		fClient.addFacilityDetail(f1, fd1);
-		fClient.listFacilities();
-		fClient.requestAvailableCapacity(f1);
-		fClient.addInspection(f1, i1);
-		fClient.removeFacility(f1);
+		//Begin Facility tests
+		f1.addNewFacility();
+		f1.addFacilityDetail(fd1);
+		f1.listFacilities();
+		f1.requestAvailableCapacity();
+		f1.addInspection(i1);
+		f1.removeFacility();
 		//End FacilityDAL tests
 		
 		//Begin UseDAL tests
-		fClient.addNewFacility(f1);
+		f1.addNewFacility();
 		UseDAO uClient = new UseDAO();
 		uClient.isInUseDuringInterval(f1, dt1, st1, et1);
 		uClient.assignFacilityToUse(f1, ur1);

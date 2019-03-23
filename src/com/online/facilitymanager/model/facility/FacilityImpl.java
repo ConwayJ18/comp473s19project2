@@ -1,6 +1,9 @@
 package com.online.facilitymanager.model.facility;
 
 import java.util.ArrayList;
+import java.util.Collection;
+
+import com.online.facilitymanager.data.FacilityDAO;
 import com.online.facilitymanager.model.inspection.Inspection;
 import com.online.facilitymanager.model.maintenance.Maintenance;
 import com.online.facilitymanager.model.use.Use;
@@ -121,12 +124,41 @@ public class FacilityImpl implements Facility
 		this.inspections = inspections;
 	}
 	
-	/**
-	 * @param inspection the inspection to set
+	/*
+	 * Begin FacilityDAO methods
 	 */
-	@Override
-	public void addInspection(Inspection inspection)
+	public Collection<Facility> listFacilities()
 	{
-		inspections.add(inspection);
+		return FacilityDAO.listFacilities();
+	}
+	
+	public FacilityDetail getFacilityInformation()
+	{
+		return FacilityDAO.getFacilityInformation(this);
+	}
+	
+	public int requestAvailableCapacity()
+	{
+		return FacilityDAO.getFacilityInformation(this).getCapacity();
+	}
+	
+	public Facility addNewFacility()
+	{
+		return FacilityDAO.addNewFacility(this);
+	}
+	
+	public void addFacilityDetail(FacilityDetail fd)
+	{
+		FacilityDAO.addFacilityDetail(this, fd);
+	}
+	
+	public void removeFacility()
+	{
+		FacilityDAO.removeFacility(this);
+	}
+	
+	public void addInspection(Inspection i)
+	{
+		FacilityDAO.addInspection(this, i);
 	}
 }
