@@ -3,10 +3,19 @@ package com.online.facilitymanager.model.facility;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import com.online.facilitymanager.data.Database;
 import com.online.facilitymanager.data.FacilityDAO;
+import com.online.facilitymanager.data.UseDAO;
 import com.online.facilitymanager.model.inspection.Inspection;
 import com.online.facilitymanager.model.maintenance.Maintenance;
+import com.online.facilitymanager.model.slot.Date;
+import com.online.facilitymanager.model.slot.Days;
+import com.online.facilitymanager.model.slot.Slot;
+import com.online.facilitymanager.model.slot.SlotImpl;
+import com.online.facilitymanager.model.slot.Time;
 import com.online.facilitymanager.model.use.Use;
+import com.online.facilitymanager.model.use.UseRequest;
+import com.online.facilitymanager.model.use.UseSchedule;
 
 public class FacilityImpl implements Facility
 {
@@ -160,5 +169,43 @@ public class FacilityImpl implements Facility
 	public void addInspection(Inspection i)
 	{
 		FacilityDAO.addInspection(this, i);
+	}
+	
+	/*
+	 * Begin UseDAO methods
+	 */
+	public boolean isInUseDuringInterval(Date d, Time start, Time end)
+	{
+		return UseDAO.isInUseDuringInterval(this, d, start, end);
+	}
+	
+	public boolean isInUseDuringInterval(Days d, Time start, Time end)
+	{
+		return UseDAO.isInUseDuringInterval(this, d, start, end);
+	}
+	
+	public void assignFacilityToUse(UseRequest ur)
+	{
+		UseDAO.assignFacilityToUse(this, ur);
+	}
+	
+	public void vacateFacility()
+	{
+		UseDAO.vacateFacility(this);
+	}
+	
+	public ArrayList<Inspection> listInspections()
+	{
+		return UseDAO.listInspections(this);
+	}
+	
+	public UseSchedule listActualUsage()
+	{
+		return UseDAO.listActualUsage(this);
+	}
+	
+	public double calcUsageRate()
+	{
+		return UseDAO.calcUsageRate(this);
 	}
 }
