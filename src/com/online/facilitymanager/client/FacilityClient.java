@@ -136,15 +136,14 @@ public class FacilityClient
 		//End UseDAL tests
 		
 		//Begin MaintenanceDAL tests
-		MaintenanceDAO mClient = new MaintenanceDAO();
-		mClient.makeFacilityMaintRequest(f1, mr1);
-		mClient.scheduleMaintenance(f1, mo1, s1);
-		mClient.calcMaintenanceCostForFacility(f1);
-		mClient.calcProblemRateForFacility(f1);
-		mClient.calcDownTimeForFacility(f1);
-		mClient.listMaintRequests(f1);
-		mClient.listMaintenance(f1);
-		mClient.listFacilityProblems(f1);
+		f1.makeFacilityMaintRequest(mr1);
+		f1.scheduleMaintenance(mo1, s1);
+		f1.calcMaintenanceCostForFacility();
+		f1.calcProblemRateForFacility();
+		f1.calcDownTimeForFacility();
+		f1.listMaintRequests();
+		f1.listMaintenance();
+		f1.listFacilityProblems();
 		//End MaintenanceDAL tests
 		
 		System.out.println("***************** End of program reached! ******************");
