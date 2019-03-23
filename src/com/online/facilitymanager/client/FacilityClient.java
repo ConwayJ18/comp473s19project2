@@ -127,13 +127,12 @@ public class FacilityClient
 		
 		//Begin UseDAL tests
 		f1.addNewFacility();
-		UseDAO uClient = new UseDAO();
-		uClient.isInUseDuringInterval(f1, dt1, st1, et1);
-		uClient.assignFacilityToUse(f1, ur1);
-		uClient.vacateFacility(f1);
-		uClient.listInspections(f1);
-		uClient.listActualUsage(f1);
-		uClient.calcUsageRate(f1);
+		f1.isInUseDuringInterval(dt1, st1, et1);
+		f1.assignFacilityToUse(ur1);
+		f1.vacateFacility();
+		f1.listInspections();
+		f1.listActualUsage();
+		f1.calcUsageRate();
 		//End UseDAL tests
 		
 		//Begin MaintenanceDAL tests
