@@ -13,17 +13,17 @@ public class MaintenanceDAO
 {
 	public MaintenanceDAO() {}
 	
-	public void makeFacilityMaintRequest(Facility f, MaintenanceRequest mr)
+	public static void makeFacilityMaintRequest(Facility f, MaintenanceRequest mr)
 	{
 		Database.db.get(f).getMaintenance().addMaintenanceRequest(mr);
 	}
 	
-	public void scheduleMaintenance(Facility f, MaintenanceOrder mo, Slot s)
+	public static void scheduleMaintenance(Facility f, MaintenanceOrder mo, Slot s)
 	{
 		Database.db.get(f).getMaintenance().addOrderToSchedule(mo, s);
 	}
 
-	public int calcMaintenanceCostForFacility(Facility f)
+	public static int calcMaintenanceCostForFacility(Facility f)
 	{
 		int totalCost = 0;
 		
@@ -45,7 +45,7 @@ public class MaintenanceDAO
 		return totalCost;
 	}
 	
-	public String calcProblemRateForFacility(Facility f)
+	public static String calcProblemRateForFacility(Facility f)
 	{
 		int totalProblems = 0;
 		Date oldestDate = new DateImpl(Integer.MAX_VALUE,Integer.MAX_VALUE,Integer.MAX_VALUE);
@@ -80,7 +80,7 @@ public class MaintenanceDAO
 		return totalProblems + " since " + oldestDate.toString();
 	}
 	
-	public int calcDownTimeForFacility(Facility f)
+	public static int calcDownTimeForFacility(Facility f)
 	{
 		int downtime = 0;
 		for(Slot s : Database.db.get(f).getMaintenance().getMaintSchedule().getSchedule().values())
@@ -96,17 +96,17 @@ public class MaintenanceDAO
 		return downtime;
 	}
 	
-	public ArrayList<MaintenanceRequest> listMaintRequests(Facility f)
+	public static ArrayList<MaintenanceRequest> listMaintRequests(Facility f)
 	{
 		return Database.db.get(f).getMaintenance().getMaintenanceReqs();
 	}
 	
-	public ArrayList<MaintenanceOrder> listMaintenance(Facility f)
+	public static ArrayList<MaintenanceOrder> listMaintenance(Facility f)
 	{
 		return Database.db.get(f).getMaintenance().getMaintenanceOrders();
 	}
 	
-	public MaintenanceSchedule listFacilityProblems(Facility f)
+	public static MaintenanceSchedule listFacilityProblems(Facility f)
 	{
 		return Database.db.get(f).getMaintenance().getMaintSchedule();
 	}

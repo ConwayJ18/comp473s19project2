@@ -5,10 +5,15 @@ import java.util.Collection;
 
 import com.online.facilitymanager.data.Database;
 import com.online.facilitymanager.data.FacilityDAO;
+import com.online.facilitymanager.data.MaintenanceDAO;
 import com.online.facilitymanager.data.UseDAO;
 import com.online.facilitymanager.model.inspection.Inspection;
 import com.online.facilitymanager.model.maintenance.Maintenance;
+import com.online.facilitymanager.model.maintenance.MaintenanceOrder;
+import com.online.facilitymanager.model.maintenance.MaintenanceRequest;
+import com.online.facilitymanager.model.maintenance.MaintenanceSchedule;
 import com.online.facilitymanager.model.slot.Date;
+import com.online.facilitymanager.model.slot.DateImpl;
 import com.online.facilitymanager.model.slot.Days;
 import com.online.facilitymanager.model.slot.Slot;
 import com.online.facilitymanager.model.slot.SlotImpl;
@@ -207,5 +212,48 @@ public class FacilityImpl implements Facility
 	public double calcUsageRate()
 	{
 		return UseDAO.calcUsageRate(this);
+	}
+	
+	/*
+	 * Begin MaintenanceDAO methods
+	 */
+	public void makeFacilityMaintRequest(MaintenanceRequest mr)
+	{
+		MaintenanceDAO.makeFacilityMaintRequest(this, mr);
+	}
+	
+	public void scheduleMaintenance(MaintenanceOrder mo, Slot s)
+	{
+		MaintenanceDAO.scheduleMaintenance(this, mo, s);
+	}
+
+	public int calcMaintenanceCostForFacility()
+	{
+		return MaintenanceDAO.calcMaintenanceCostForFacility(this);
+	}
+	
+	public String calcProblemRateForFacility()
+	{
+		return MaintenanceDAO.calcProblemRateForFacility(this);
+	}
+	
+	public int calcDownTimeForFacility()
+	{
+		return MaintenanceDAO.calcDownTimeForFacility(this);
+	}
+	
+	public ArrayList<MaintenanceRequest> listMaintRequests()
+	{
+		return MaintenanceDAO.listMaintRequests(this);
+	}
+	
+	public ArrayList<MaintenanceOrder> listMaintenance()
+	{
+		return MaintenanceDAO.listMaintenance(this);
+	}
+	
+	public MaintenanceSchedule listFacilityProblems()
+	{
+		return MaintenanceDAO.listFacilityProblems(this);
 	}
 }

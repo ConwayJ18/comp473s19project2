@@ -3,11 +3,16 @@ package com.online.facilitymanager.model.facility;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import com.online.facilitymanager.data.MaintenanceDAO;
 import com.online.facilitymanager.data.UseDAO;
 import com.online.facilitymanager.model.inspection.Inspection;
 import com.online.facilitymanager.model.maintenance.Maintenance;
+import com.online.facilitymanager.model.maintenance.MaintenanceOrder;
+import com.online.facilitymanager.model.maintenance.MaintenanceRequest;
+import com.online.facilitymanager.model.maintenance.MaintenanceSchedule;
 import com.online.facilitymanager.model.slot.Date;
 import com.online.facilitymanager.model.slot.Days;
+import com.online.facilitymanager.model.slot.Slot;
 import com.online.facilitymanager.model.slot.Time;
 import com.online.facilitymanager.model.use.Use;
 import com.online.facilitymanager.model.use.UseRequest;
@@ -45,4 +50,12 @@ public interface Facility
 	public double calcUsageRate();
 	
 	//MaintenanceDAO Methods
+	public void makeFacilityMaintRequest(MaintenanceRequest mr);
+	public void scheduleMaintenance(MaintenanceOrder mo, Slot s);
+	public int calcMaintenanceCostForFacility();
+	public String calcProblemRateForFacility();
+	public int calcDownTimeForFacility();
+	public ArrayList<MaintenanceRequest> listMaintRequests();
+	public ArrayList<MaintenanceOrder> listMaintenance();
+	public MaintenanceSchedule listFacilityProblems();
 }
