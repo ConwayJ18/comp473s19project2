@@ -42,6 +42,6 @@ public class FacilityDAO
 	
 	public static void addInspection(Facility f, Inspection i)
 	{
-		Database.db.get(f).addInspection(i);
+		Database.db.get(f).scheduleInspection(i);
 	}
 }

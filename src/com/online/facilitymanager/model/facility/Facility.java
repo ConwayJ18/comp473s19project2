@@ -30,6 +30,7 @@ public interface Facility
 	void setMaintenance(Maintenance maintenance);
 	ArrayList<Inspection> getInspections();
 	void setInspections(ArrayList<Inspection> inspections);
+	public void scheduleInspection(Inspection i);
 	
 	//FacilityDAO Methods
 	Collection<Facility> listFacilities();

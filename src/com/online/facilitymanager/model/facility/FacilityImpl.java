@@ -138,6 +138,11 @@ public class FacilityImpl implements Facility
 		this.inspections = inspections;
 	}
 	
+	public void scheduleInspection(Inspection i)
+	{
+		inspections.add(i);
+	}
+	
 	/*
 	 * Begin FacilityDAO methods
 	 */
